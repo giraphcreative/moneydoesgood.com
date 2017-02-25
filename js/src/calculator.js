@@ -18,8 +18,14 @@ var calculate = function(){
 	});
 
 	var interest_savings = loan_info_original.total_interest - loan_info_new.total_interest;
+	if ( loan_info_original == 0 || loan_info_new == 0 ) {
+		interest_savings = 0;
+		$('.results').html( 'Please enter values in all fields to see your savings!' );
+	} else {
+		interest_savings = interest_savings.toFixed(2);
+		$('.results').html( 'Congratulations! You can save up to <span>$'+interest_savings+'</span>' );
+	}
 
-	$('.results').html( 'Congratulations! You can save up to <span>$'+interest_savings.toFixed(2)+'</span>' );
 }
 
 
